@@ -1,0 +1,2 @@
+zookeeper-server/target/*jar /usr/share/zookeeper/lib/
+zookeeper-server/target/lib/*jar /usr/share/zookeeper/lib/

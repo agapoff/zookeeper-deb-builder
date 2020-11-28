@@ -1,0 +1,29 @@
+#!/usr/bin/make -f
+
+export JAVA_HOME=/usr/lib/jvm/default-java
+
+PYVERS := $(shell pyversions -vr)
+DEB_UPSTREAM_VERSION=$(shell dpkg-parsechangelog | sed -rne 's,^Version: ([^+]+).*,\1,p')
+DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+DEB_CHANGELOG_DATETIME = $(shell dpkg-parsechangelog --show-field Date)
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	mvn clean -Pfull-build
+	mvn install -Pfull-build -DskipTests
+	#cp -r /build/source /output
+	#cp -r zookeeper-server/target /output
+
+override_dh_install:
+	# Generate install files for Multiarch capability
+	for install in libzookeeper-mt2 libzookeeper-st2 \
+				   libzookeeper-st-dev libzookeeper-mt-dev; do \
+		sed -e 's/__ARCH__/$(DEB_HOST_MULTIARCH)/g' debian/$$install.install.in \
+			> debian/$$install.install; \
+	done
+	dh_install
+
+override_dh_installinit:
+	dh_installinit --name=zookeeper

@@ -1,0 +1,2 @@
+zookeeper-client/zookeeper-client-c/target/c/lib/*_st.a /usr/lib/__ARCH__
+zookeeper-client/zookeeper-client-c/target/c/lib/*_st.so /usr/lib/__ARCH__

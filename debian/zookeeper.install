@@ -1,0 +1,12 @@
+bin/zkCleanup.sh /usr/share/zookeeper/bin/
+bin/zkCli.sh /usr/share/zookeeper/bin/
+bin/zkServer-initialize.sh /usr/share/zookeeper/bin/
+bin/zkServer.sh /usr/share/zookeeper/bin/
+bin/zkTxnLogToolkit.sh /usr/share/zookeeper/bin/
+debian/bin/zkPurgeTxnLog.sh /usr/share/zookeeper/bin/
+zookeeper-contrib/zookeeper-contrib-zooinspector/target/zookeeper-contrib-zooinspector-*.jar /usr/share/zookeeper/zooinspector/zookeeper-zooinspector.jar
+debian/conf_example /etc/zookeeper/
+debian/zooinspector /usr/bin
+zookeeper-contrib/zookeeper-contrib-zooinspector/src/main/resources/*cfg /etc/zookeeper/zooinspector
+zookeeper-contrib/zookeeper-contrib-zooinspector/src/main/resources/log4j.properties /etc/zookeeper/zooinspector
+zookeeper-contrib/zookeeper-contrib-zooinspector/src/main/resources/icons /usr/share/zookeeper/zooinspector

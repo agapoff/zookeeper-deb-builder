@@ -1,0 +1,1 @@
+zookeeper-client/zookeeper-client-c/target/c/lib/*_st.so.* /usr/lib/__ARCH__

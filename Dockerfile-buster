@@ -1,0 +1,48 @@
+FROM debian:buster
+ENV DEBIAN_FRONTEND noninteractive
+RUN apt-get update && apt-get install -y \
+         maven \
+         build-essential \
+         zip \
+         ivy \
+         ivy-debian-helper \
+         libaprutil1 \
+         devscripts \
+         equivs \
+         git-buildpackage \
+         git \
+         lsb-release \
+         make \
+         pristine-tar \
+         fakeroot \
+         cdbs \
+         wget \
+         javahelper \ 
+         debhelper \
+         libxml2-dev \
+         libcppunit-dev \
+         help2man \
+         autoconf \
+         automake \
+         javacc \
+         junit4 \
+         libboost-dev \
+         pkg-config \
+         procps \
+         libtool \
+         maven-repo-helper \
+         openjdk-11-jdk \
+         ant \
+         uuid-dev \
+         libxerces2-java \
+         libslf4j-java \
+         libmockito-java \
+         liblog4cxx-dev \
+         libjline-java \
+         libcommons-io-java \
+         libcommons-collections3-java \
+         libapacheds-java \
+         default-jdk \
+         default-jdk-doc \
+    && apt-get clean \
+    && rm -rf /tmp/* /var/tmp/*

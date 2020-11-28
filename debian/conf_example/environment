@@ -1,0 +1,23 @@
+ZOOMAIN=org.apache.zookeeper.server.quorum.QuorumPeerMain
+ZOOCFGDIR=/etc/zookeeper/conf
+ZOOCFG=/etc/zookeeper/conf/zoo.cfg
+ZOO_LOG_DIR=/var/log/zookeeper
+ZOO_LOG4J_PROP=INFO,ROLLINGFILE
+JMXLOCALONLY=false
+JAVA_OPTS="-Xms128M
+ -Xmx1G
+ -Xlog:gc*,gc+ref=debug,gc+heap=debug,gc+age=trace:file=$ZOO_LOG_DIR/gc-%p-%t.log:tags,uptime,time,level:filecount=20,filesize=25m
+ -Xlog:safepoint*:file=$ZOO_LOG_DIR/safepoints-%p-%t.log:tags,uptime,time,level:filecount=20,filesize=25m
+ -XX:+UseG1GC
+ -XX:G1HeapRegionSize=16M
+ -XX:MaxGCPauseMillis=20
+ -XX:MaxMetaspaceFreeRatio=80
+ -XX:MinMetaspaceFreeRatio=50
+ -XX:ParallelGCThreads=4
+"
+
+# If ZooKeeper is started through systemd, this will only be used for command
+# line tools such as `zkCli.sh` and not for the actual server
+JAVA=/usr/bin/java
+
+CLASSPATH="$ZOOCFGDIR:/usr/share/zookeeper/lib/*"

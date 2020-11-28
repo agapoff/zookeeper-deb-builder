@@ -1,0 +1,1 @@
+zookeeper-client/zookeeper-client-c/target/c/bin/*   /usr/lib/zookeeper/bin
